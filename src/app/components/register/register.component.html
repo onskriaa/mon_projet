@@ -1,0 +1,13 @@
+
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <h2>Inscription</h2>
+  <input type="text" name="nom" [(ngModel)]="formData.nom" placeholder="Nom" required><br>
+  <input type="text" name="prenom" [(ngModel)]="formData.prenom" placeholder="Prénom" required><br>
+  <input type="date" name="date_naissance" [(ngModel)]="formData.date_naissance" placeholder="Date de naissance"><br>
+  <input type="email" name="email" [(ngModel)]="formData.email" placeholder="Email" required><br>
+  <input type="password" name="password" [(ngModel)]="formData.password" placeholder="Mot de passe" required><br>
+  <button type="submit">S'inscrire</button>
+  <p class="login-link">
+    Déjà inscrit ? <a routerLink="/login">Se connecter</a>
+  </p>
+</form>

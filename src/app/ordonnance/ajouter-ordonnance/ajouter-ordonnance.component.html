@@ -1,0 +1,74 @@
+<div class="container">
+  <!-- Sidebar statique -->
+  <div class="sidebar">
+    <div class="sidebar-logo">🩺 MediConnect</div>
+
+    <div class="sidebar-logo">
+      
+    </div>
+   
+    
+    <ul class="nav-menu">
+      <li class="nav-item"><a routerLink="/medecin" class="nav-link">👨‍⚕️ Mon Profil</a></li>
+      <li class="nav-item"><a routerLink="/ajouter-ordonnance" class="nav-link active">➕ Ajouter Ordonnance</a></li>
+      <li class="nav-item"><a routerLink="/liste-ordonnance" class="nav-link">📋 Liste des Ordonnances</a></li>
+     <!-- <li class="nav-item"><a routerLink="/mes-patients" class="nav-link">👥 Mes Patients</a></li>---->
+    </ul>
+   
+  </div>
+ 
+  <!-- Contenu principal -->
+  <div class="main-content">
+    <h2>Ajouter une ordonnance</h2>
+
+    <form (ngSubmit)="submitForm()">
+
+      <label>Patient :</label>
+      <select [(ngModel)]="selectedPatientId" name="patient" required>
+        <option *ngFor="let patient of patients" [value]="patient.id">
+          {{ patient.nom }} {{ patient.prenom }}
+        </option>
+      </select>
+
+      <br><br>
+
+      <label>Médicaments :</label><br>
+      <div *ngFor="let medicament of medicaments">
+        <label>
+          <input
+            type="checkbox"
+            [value]="medicament.id"
+            (change)="toggleMedicamentSelection(medicament.id)"
+            [checked]="selectedMedicaments.includes(medicament.id)" />
+          {{ medicament.name }}
+        </label>
+
+        <div *ngIf="selectedMedicaments.includes(medicament.id)">
+          ➤ Quantité :
+          <input
+            type="number"
+            min="1"
+            [(ngModel)]="medicamentQuantities[medicament.id]"
+            name="quantite_{{ medicament.id }}"
+            required />
+        </div>
+      </div>
+
+      <br>
+
+      <label>Date :</label>
+      <input type="date" [(ngModel)]="ordonnanceDate" name="date" required />
+
+      <br><br>
+
+      <label>Détails :</label>
+      <textarea [(ngModel)]="details" name="details"></textarea>
+
+      <br><br>
+
+      <button type="submit">Créer l'ordonnance</button>
+    </form>
+
+  </div>
+ 
+</div>

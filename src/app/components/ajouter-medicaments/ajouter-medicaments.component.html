@@ -1,0 +1,101 @@
+<button class="btn-retour" onclick="history.back()">← </button>
+<div class="container mt-4">
+  <h2>➕ Ajouter un médicament</h2>
+
+  <form (ngSubmit)="ajouterMedicament()">
+    <div class="form-group">
+      <label>Nom :</label>
+      <input type="text" class="form-control" [(ngModel)]="medicament.name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label>Description :</label>
+      <textarea class="form-control" [(ngModel)]="medicament.description" name="description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label>Prix :</label>
+      <input type="number" step="0.001" class="form-control" [(ngModel)]="medicament.prix" name="prix" required>
+    </div>
+    <div class="form-group">
+      <label>Photo (URL) :</label>
+      <input type="text" class="form-control" [(ngModel)]="medicament.photo" name="photo">
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Ajouter</button>
+  </form>
+
+  <hr>
+
+  <h2>📋 Liste des médicaments</h2>
+
+  <table class="table table-bordered" *ngIf="medicaments.length > 0">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Prix</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let med of medicaments">
+        <td>{{ med.name }}</td>
+        <td>{{ med.description }}</td>
+        <td>{{ med.prix | number:'1.3-3' }} DT</td>
+        <td>
+          <img [src]="med.photo" width="100" height="80" *ngIf="med.photo">
+        </td>
+        <td>
+          <button class="btn btn-warning btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editModal"
+                  (click)="chargerMedicament(med)">
+            ✏️ Modifier
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="supprimerMedicament(med.id)">
+            🗑 Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="medicaments.length === 0" class="text-muted">
+    Aucun médicament disponible.
+  </p>
+
+  <!-- Modal Modification Médicament -->
+  <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">✏️ Modifier Médicament</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Nom :</label>
+              <input class="form-control" [(ngModel)]="medicamentEdit.name" name="edit_name">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description :</label>
+              <textarea class="form-control" [(ngModel)]="medicamentEdit.description" name="edit_description"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Prix :</label>
+              <input type="number" step="0.001" class="form-control" [(ngModel)]="medicamentEdit.prix" name="edit_prix">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Photo (URL) :</label>
+              <input class="form-control" [(ngModel)]="medicamentEdit.photo" name="edit_photo">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button class="btn btn-primary" (click)="modifierMedicament()">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

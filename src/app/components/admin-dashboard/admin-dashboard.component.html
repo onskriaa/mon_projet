@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - Système Médical</title>
+ 
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">M</div>
+        <div class="app-name">MedSystem</div>
+      </div>
+      
+      <div class="menu-category">Administration</div>
+      <ul class="sidebar-menu">
+        <li><a routerLink="/dashboard" class="active">
+          <span class="menu-icon">📊</span>
+          <span>Tableau de bord</span>
+        </a></li>
+        <li><a routerLink="/ajouter-medecin">
+          <span class="menu-icon">👨‍⚕️</span>
+          <span>Gestion des Médecins</span>
+        </a></li>
+        <li><a routerLink="/ajouter-medicament">
+          <span class="menu-icon">💊</span>
+          <span>Gestion des Médicaments</span>
+        </a></li>
+      </ul>
+      
+      <div class="menu-category">Informations</div>
+      <ul class="sidebar-menu">
+        <li><a routerLink="/liste-patients">
+          <span class="menu-icon">👥</span>
+          <span>Liste des patients</span>
+        </a></li>
+        <li><a routerLink="/admin-ordonnances">
+          <span class="menu-icon">📝</span>
+          <span>Toutes les ordonnances</span>
+        </a></li>
+      <!---  <li><a routerLink="/statistiques">
+          <span class="menu-icon">📈</span>
+          <span>Statistiques</span>
+        </a></li>---->
+      </ul>
+      
+      <div class="menu-category">Paramètres</div>
+      <ul class="sidebar-menu">
+       <!-- <li><a routerLink="/configuration">
+          <span class="menu-icon">⚙️</span>
+          <span>Configuration</span>
+        </a></li>
+        <li><a routerLink="/securite">
+          <span class="menu-icon">🔒</span>
+          <span>Sécurité</span>
+        </a></li>------>
+        <li><a (click)="logout()" style="cursor: pointer;">
+          <span class="menu-icon">🚪</span>
+          <span>Déconnexion</span>
+        </a></li>
+      </ul>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+        <div class="welcome-text">
+          <h1>Bienvenue, {{ user.email }}</h1>
+          <p>Rôle : <strong>{{ user.role }}</strong> | Accès complet au système</p>
+        </div>
+        <div class="user-actions">
+          <button class="btn btn-danger" (click)="logout()" style="cursor: pointer;">Déconnexion</button>
+        </div>
+      </div>
+      
+      <!-- Stats Cards -->
+      <div class="dashboard-stats">
+        <div class="stat-card">
+          <div class="stat-icon">👨‍⚕️</div>
+          <div class="stat-content">
+            <h3>24</h3>
+            <p>Médecins enregistrés</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-content">
+            <h3>138</h3>
+            <p>Patients actifs</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">📝</div>
+          <div class="stat-content">
+            <h3>56</h3>
+            <p>Ordonnances ce mois</p>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon">💊</div>
+          <div class="stat-content">
+            <h3>215</h3>
+            <p>Médicaments dans la base</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Feature Cards -->
+      <div class="dashboard-cards">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Fonctionnalités d'administration</h3>
+            <div class="card-actions">
+              <a href="#">Tout voir</a>
+            </div>
+          </div>
+          
+          <ul class="features-list">
+            <li>
+              <a routerLink="/ajouter-medecin" style="text-decoration: none; color: inherit; display: flex; align-items: center; width: 100%;">
+                <div class="feature-icon">👨‍⚕️</div>
+                <div class="feature-details">
+                  <h4>Gestion des Médecins</h4>
+                  <p>Ajouter, modifier ou supprimer des médecins</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/ajouter-medicament" style="text-decoration: none; color: inherit; display: flex; align-items: center; width: 100%;">
+                <div class="feature-icon">💊</div>
+                <div class="feature-details">
+                  <h4>Gestion des Médicaments</h4>
+                  <p>Maintenir la base de données des médicaments</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/liste-patients" style="text-decoration: none; color: inherit; display: flex; align-items: center; width: 100%;">
+                <div class="feature-icon">👥</div>
+                <div class="feature-details">
+                  <h4>Liste des patients</h4>
+                  <p>Voir et gérer tous les patients enregistrés</p>
+                </div>
+              </a>
+            </li>
+            <li>
+            <a routerLink="/admin-ordonnances" style="text-decoration: none; color: inherit; display: flex; align-items: center; width: 100%;">
+                <div class="feature-icon">📝</div>
+                <div class="feature-details">
+                  <h4>Ordonnances</h4>
+                  <p>Accéder à toutes les ordonnances du système</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+      
+      </div>
+    </div>
+  </div>
+</body>
+</html>

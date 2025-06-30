@@ -1,0 +1,25 @@
+<button class="btn-retour" onclick="history.back()">← </button>
+
+<div class="container mt-4">
+    <h2 class="mb-4">📋 Ordonnances Admin</h2>
+  
+    <div *ngIf="ordonnances.length === 0">
+      <p>Aucune ordonnance trouvée.</p>
+    </div>
+  
+    <div *ngFor="let ordonnance of ordonnances" class="card mb-3 p-3 shadow-sm">
+      <p><strong>👤 Patient :</strong> {{ ordonnance.patient?.nom }} {{ ordonnance.patient?.prenom }}</p>
+      <p><strong>📅 Date :</strong> {{ ordonnance.date }}</p>
+      <p><strong>📝 Détails :</strong> {{ ordonnance.details }}</p>
+  
+      <div *ngIf="ordonnance.medicaments?.length">
+        <h6>💊 Médicaments :</h6>
+        <ul>
+          <li *ngFor="let m of ordonnance.medicaments">
+            {{ m.name }} — {{ m.description }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

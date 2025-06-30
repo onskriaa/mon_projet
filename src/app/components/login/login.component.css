@@ -1,0 +1,82 @@
+/* Structure générale avec deux colonnes */
+:host {
+    display: flex;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Partie formulaire */
+  form {
+    flex: 1;
+    background-color: #f4f6f8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  h2 {
+    font-size: 30px;
+    margin-bottom: 10px; /* 🔽 rapproche le mot Login */
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  input {
+    width: 320px;
+    padding: 14px 16px;
+    margin-bottom: 10px; /* 🔽 espace entre les champs */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #ecf0f1;
+  }
+  
+  input:focus {
+    border: 1px solid #2ecc71;
+    outline: none;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 12px 28px;
+    font-size: 16px;
+    background-color: #00bcd4; /* 💙 bleu ciel */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #00acc1; /* 💙 bleu ciel légèrement foncé au hover */
+}
+  
+  /* Partie image */
+  :host::after {
+    content: '';
+    flex: 1;
+    background-image: url('/assets/image-login.png'); /* adapte ici */
+    background-size: cover;
+    background-position: center;
+  }
+  .register-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .register-link a {
+    color: #00bcd4; /* 💙 lien "Créer un compte" aussi en bleu ciel */
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
+    color: #00acc1; /* effet hover plus foncé */
+  }
+  

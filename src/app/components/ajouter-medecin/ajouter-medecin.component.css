@@ -1,0 +1,17 @@
+.btn-retour {
+    background-color: #87CEEB; /* bleu ciel */
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .btn-retour:hover {
+    background-color: #00bcd4;
+  }
+  .btn-warning {
+    margin-right: 8px; /* ou 10px selon l’espace que tu veux */
+  }

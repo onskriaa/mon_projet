@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="sidebar">
+    <div class="sidebar-logo">🩺 MediConnect</div>
+    <ul class="nav-menu">
+      <li class="nav-item"><a routerLink="/patient" class="nav-link">👨‍⚕️ Mon Profil</a></li>
+      <li class="nav-item"><a routerLink="/patient-ordonnances" class="nav-link">Liste des Ordonnance</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <!-- Navbar -->
+    <div class="navbar">
+      <h1>👨‍⚕️ Espace Patient</h1>
+     <button class="logout-btn">Déconnexion</button>
+    </div>
+
+    <!-- Contenu -->
+    <h2>📋 Mes Ordonnances</h2>
+
+    <div *ngIf="ordonnances.length === 0">Aucune ordonnance trouvée.</div>
+
+    <div *ngFor="let ordonnance of ordonnances" class="card p-3 my-3">
+      <p><strong>📅 Date :</strong> {{ ordonnance.date }}</p>
+      <p><strong>📝 Détails :</strong> {{ ordonnance.details }}</p>
+
+      <div *ngIf="ordonnance.medicaments?.length">
+        <h6>💊 Médicaments :</h6>
+        <ul>
+          <li *ngFor="let m of ordonnance.medicaments">
+            {{ m.name }} (Quantité : {{ m.quantite }})
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

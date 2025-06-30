@@ -1,0 +1,18 @@
+.btn-retour {
+    background-color: #5dade2; /* bleu ciel */
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  .btn-retour:hover {
+    background-color: #3498db; /* bleu un peu plus foncé au survol */
+  }
+  
+  

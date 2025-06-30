@@ -1,0 +1,30 @@
+<button class="btn-retour" onclick="history.back()">← </button>
+<div class="container mt-4">
+    <h2>📋 Liste des patients</h2>
+  
+    <table class="table table-striped" *ngIf="patients.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Actions</th> <!-- Ajout de la colonne Actions -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>{{ patient.id }}</td>
+          <td>{{ patient.nom }}</td>
+          <td>{{ patient.prenom }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="supprimerPatient(patient.id)">
+              🗑 Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="patients.length === 0">Aucun patient trouvé.</p>
+  </div>
+  

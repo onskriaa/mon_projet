@@ -1,0 +1,109 @@
+<!-- Bouton retour -->
+<button class="btn btn-info mb-3" onclick="history.back()">← </button>
+
+<div class="container mt-4">
+  <h2>➕ Ajouter un médecin</h2>
+
+  <form (ngSubmit)="onSubmit()" *ngIf="!medecin.id">
+    <div class="form-group mb-2">
+      <label>Nom :</label>
+      <input type="text" class="form-control" [(ngModel)]="medecin.nom" name="nom" required>
+    </div>
+    <div class="form-group mb-2">
+      <label>Prénom :</label>
+      <input type="text" class="form-control" [(ngModel)]="medecin.prenom" name="prenom" required>
+    </div>
+    <div class="form-group mb-2">
+      <label>Spécialité :</label>
+      <input type="text" class="form-control" [(ngModel)]="medecin.specialite" name="specialite" required>
+    </div>
+    <div class="form-group mb-2">
+      <label>Email :</label>
+      <input type="email" class="form-control" [(ngModel)]="medecin.email" name="email" required>
+    </div>
+    <div class="form-group mb-3">
+      <label>Mot de passe :</label>
+      <input type="password" class="form-control" [(ngModel)]="medecin.password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+
+  <hr>
+
+  <h2>📋 Liste des médecins</h2>
+
+  <table class="table table-bordered" *ngIf="medecins.length > 0">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Spécialité</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let med of medecins">
+        <td>{{ med.nom }}</td>
+        <td>{{ med.prenom }}</td>
+        <td>{{ med.specialite }}</td>
+        <td>{{ med.user?.email }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editModal"
+                  (click)="editMedecin(med)">
+            ✏️ Modifier
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="deleteMedecin(med.id)">
+            🗑 Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="medecins.length === 0" class="text-muted">
+    Aucun médecin trouvé.
+  </p>
+
+  <!-- Modal Modification Médecin -->
+  <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">✏️ Modifier Médecin</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-2">
+              <label>Nom :</label>
+              <input class="form-control" [(ngModel)]="medecin.nom" name="edit_nom">
+            </div>
+            <div class="mb-2">
+              <label>Prénom :</label>
+              <input class="form-control" [(ngModel)]="medecin.prenom" name="edit_prenom">
+            </div>
+            <div class="mb-2">
+              <label>Spécialité :</label>
+              <input class="form-control" [(ngModel)]="medecin.specialite" name="edit_specialite">
+            </div>
+            <div class="mb-2">
+              <label>Email :</label>
+              <input class="form-control" [(ngModel)]="medecin.email" name="edit_email">
+            </div>
+            <div class="mb-2">
+              <label>Mot de passe :</label>
+              <input class="form-control" type="password" [(ngModel)]="medecin.password" name="edit_password">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button class="btn btn-primary" (click)="onSubmit()">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
